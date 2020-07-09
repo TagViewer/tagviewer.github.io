@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+#header {
+  height: 100vh;
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-rows:1fr;
+  grid-template-areas: "nav";
+  @media (min-aspect-ratio: 1/1) {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "image nav";
+  }
+  #header-image {
+    grid-area: image;
+  }
+  #header-nav {
+    grid-area: nav;
+  }
+}
