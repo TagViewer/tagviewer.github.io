@@ -1,58 +1,56 @@
 @keyframes flash {
-  start {
+  from {
     opacity:0;
-  } 
+  }
   50% {
     opacity:1;
   }
-  end {
+  to {
     opacity:0;
   }
 }
+
 @keyframes spinForever {
-  start {
+  from {
     transform:rotate(0deg);
   }
-  50% {
-    transform:rotate(180deg);
-  }
-  99.999% {
+  to {
     transform:rotate(360deg);
-  }
-  end {
-    transform:rotate(0deg);
   }
 }
 
 body {
-  margin: 0;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  margin:0;
+  font-family:"Roboto", Arial, Helvetica, sans-serif;
   display:grid;
   grid-template-rows:4fr 1fr;
   grid-template-columns:1fr;
   justify-items:center;
   height:100vh;
 }
+
 #header {
   width:70vw;
   display:grid;
-  grid-template-columns: 1fr;
+  grid-template-columns:1fr;
   grid-template-rows:1fr auto;
-  grid-template-areas: "image" "nav";
+  grid-template-areas:"image" "nav";
+
   @media (min-aspect-ratio: 4/3) {
-    grid-template-columns: ~"min(60vw,950px)" auto;
+    grid-template-columns:~"min(60vw,950px)" auto;
     grid-template-rows:1fr;
-    grid-template-areas: "image nav";
+    grid-template-areas:"image nav";
   }
   & > #header-image {
-    grid-area: image;
+    grid-area:image;
     padding:10px 0;
     display:flex;
     flex-direction:row;
     justify-content:center;
     align-items:center;
+
     @media (min-aspect-ratio: 4/3) {
-      max-width: ~"min(60vw,950px)";
+      max-width:~"min(60vw,950px)";
     }
     & > svg {
       max-width:~"min(60vw,950px)";
@@ -65,27 +63,28 @@ body {
       &:hover {
         transform:scale(1.22);
         & > g > text {
-          opacity: 0;
+          opacity:0;
         }
       }
     }
   }
   #header-nav {
-    grid-area: nav;
+    grid-area:nav;
     display:flex;
     flex-direction:column;
     justify-content:space-evenly;
     align-items:center;
     & > a {
-      text-decoration: none;
-      color: #3676e8;
-      font-variant-caps: small-caps;
+      text-decoration:none;
+      color:#3676e8;
+      font-variant-caps:small-caps;
       transition:transform .15s steps(2);
+
       @media (max-aspect-ratio: 4/3) {
-        margin: .6rem 0;
+        margin:.6rem 0;
       }
       &:focus {
-        outline: 0;
+        outline:0;
         color:#f0af2f;
       }
       &:nth-child(2n):hover {
@@ -97,6 +96,7 @@ body {
     }
   }
 }
+
 #perks {
   display:flex;
   flex-direction:row;
@@ -109,13 +109,11 @@ body {
     align-items:center;
     & > figcaption {
       text-align:center;
+      font-size:1.1rem;
+      margin-top:.8rem;
     }
     & > img, svg {
-      height: ~"min(10vw, 100px)";
-    }
-    & > figcaption {
-      font-size: 1.1rem;
-      margin-top:.8rem;
+      height:~"min(10vw, 100px)";
     }
     &:nth-child(1) > svg {
       #interface-hover-eegg {
@@ -123,8 +121,8 @@ body {
       }
       &:hover #interface-hover-eegg {
         animation:flash .2s forwards;
-        animation-iteration-count: 2;
-        animation-timing-function: steps(1);
+        animation-iteration-count:2;
+        animation-timing-function:steps(1);
       }
     }
     &:nth-child(2) > svg {
@@ -134,7 +132,7 @@ body {
       }
       &:hover #filter-sort-eegg1, #filter-sort-eegg2 {
         //transition-timing-function: ease-out;
-        transform-origin: center center;
+        transform-origin:center center;
       }
       &:hover #filter-sort-eegg1 {
         transform:translateX(6px);
@@ -152,16 +150,16 @@ body {
       }
     }
     &:nth-child(4) > svg > path, polygon {
-      pointer-events: none;
+      pointer-events:none;
     }
     &:nth-child(5) > img {
-      animation: spinForever 1s linear;
-      animation-iteration-count: infinite;
-      animation-direction: forwards;
+      animation:spinForever 1s linear;
+      animation-iteration-count:infinite;
+      animation-direction:forwards;
       animation-play-state:paused;
     }
     &:nth-child(5) > img:hover {
-      animation-play-state: running;
+      animation-play-state:running;
     }
   }
 }
