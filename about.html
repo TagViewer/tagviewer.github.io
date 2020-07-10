@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>About TagViewer</title>
+    <meta name="author" content="Matt Fellenz">
+    <meta name="description" content="Information about TagViewer: A simple but powerful media organizer.">
+    <meta name="keywords" content="tag,viewer,organizer,media,categorization,sorting">
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto" type="text/css">
+    <link rel="stylesheet" href="about.css" type="text/css">
+  </head>
+  <body class="grt">
+    <blockquote><p>TagViewer is a simple program that allows viewing of media within a TagSpace, and rich filtering of that media with tags and properties that are stored by the program. You can also sort by values of properties or presence of tags, as well as show the media in a slideshow.</p></blockquote>
+    <h3 id="youshouldusetagviewerif">You should use TagViewer if:</h3>
+    <ul>
+      <li>You have a large repository of media that can be categorized in multiple ways</li>
+      <li>You don't want to commit to one sorting hierarchy</li>
+      <li>You find yourself looking through multiple directories for media that are in the same logical category</li>
+      <li>You want to be able to store properties of the media</li>
+    </ul>
+    <h3 id="youshouldnotusetagviewerif">You should not use TagViewer if:</h3>
+    <ul>
+      <li>Your media has one fixed system of sorting that you are satisfied with</li>
+      <li>There is only one way to sort your media</li>
+      <li>The directory hierarchy you already have works well for you</li>
+      <li>Extra metadata isn't important or necessary for your use case</li>
+      <li>You don't like Node/Electron apps (which is a valid stance, but I'm a web developer by trade so the Web 3 are just what I'm familiar with)</li>
+    </ul>
+    <h2 id="license">License</h2>
+    <blockquote>
+      <p>TagViewer Copyright © 2020 Matt Fellenz</p>
+      <p>This program comes with ABSOLUTELY NO WARRANTY; read the license for more details. This is free software, and you are welcome to redistribute it under certain conditions, as outlined in the license.</p>
+    </blockquote>
+    <p>TagViewer is licensed under the GNU General Public License 3.0. For more information, view <a rel="noopener" target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.en.html">the license</a> here.</p>
+    <h2 id="documentationuserguide">Documentation / User Guide</h2>
+    <p>TagViewer is designed to be intuitive by default but also allow meaningful configuration. Read the documentation <a rel="noopener" target="_blank" href="https://tagviewer.gitbook.io/tagviewer">here</a>, which includes a Beginner's Guide and Step-by-Step to get started, complete documentation of the functionality for more advanced users, and a configuration guide.</p>
+    <h2 id="credits">Credits</h2>
+    <p>We appreciate Google's Material Icons as they play a prominent role in the user interface.</p>
+    <script>
+      document.querySelectorAll('h2,h3').forEach(el => {const linkto = document.createElement('SPAN'); linkto.classList.add('linkto'); linkto.setAttribute('aria-label','Link to this heading'); linkto.setAttribute('role', 'button'); linkto.appendChild(document.createTextNode('\u2003')); linkto.addEventListener('click', e => history.replaceState(null,null,window.location.pathname.slice(0, window.location.pathname.indexOf('#')+1) + '#' + el.id)); el.appendChild(linkto);});
+    </script>
+  </body>
+</html>

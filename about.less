@@ -1,0 +1,63 @@
+html {
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+}
+.grt { // thanks to GRT
+	max-width: 800px;
+	font-family: "Roboto", Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+	line-height: (27rem/16);
+	padding: (17rem/16);
+}
+h2,h3 {
+  letter-spacing: (1em/32);
+  &:hover > .linkto { visibility: visible; }
+}
+h2 > .linkto,h3 > .linkto {
+  visibility:hidden;
+  display:inline;
+  background-image:url(img/link.svg);
+  background-repeat:no-repeat;
+  background-position: right center;
+  background-size:contain;
+  padding-left:6px;
+  color:black;
+  text-decoration:none;
+  cursor:pointer;
+}
+.grt h2 {
+	font-size: (26rem/16);
+	line-height: (42rem/16);
+	margin-top: (44rem/16);
+	margin-bottom: (17rem/16);
+}
+.grt h3 {
+	font-size: (20rem/16);
+	line-height: (33rem/16);
+	margin-top: (27rem/16);
+	margin-bottom: (11rem/16);
+}
+.grt p, .grt ul, .grt blockquote {
+	margin-bottom: (27rem/16);
+}
+.grt ul {
+	margin-left: (27rem/16);
+}
+.grt li {
+	margin-bottom: (11rem/16);
+}
+.grt blockquote {
+  margin:1.5rem (10rem/16); padding:.5rem (10rem/16);
+  padding-left: (17rem/16);
+  background:#f9f9f9; border-left:10px solid #ccc;
+  & > p:last-child {
+    margin-bottom:(17rem/16);
+  }
+}
+@media all and (min-width: 598px) {
+	.grt {
+		padding: (27rem/16);
+	}
+}
