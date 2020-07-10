@@ -51,10 +51,12 @@ body {
     flex-direction:row;
     justify-content:center;
     align-items:center;
-    max-width: ~"min(60vw,950px)";
+    @media (min-aspect-ratio: 4/3) {
+      max-width: ~"min(60vw,950px)";
+    }
     & > svg {
       max-width:~"min(60vw,950px)";
-      max-height:~"min(60vh,750px)";
+      height:~"min(60vh,750px)";
       transition:transform .12s steps(2);
       & > g > text {
         opacity:1;
@@ -79,6 +81,9 @@ body {
       color: #3676e8;
       font-variant-caps: small-caps;
       transition:transform .15s steps(2);
+      @media (max-aspect-ratio: 4/3) {
+        margin: .6rem 0;
+      }
       &:focus {
         outline: 0;
         color:#f0af2f;
@@ -102,6 +107,9 @@ body {
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    & > figcaption {
+      text-align:center;
+    }
     & > img, svg {
       height: ~"min(10vw, 100px)";
     }
