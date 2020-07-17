@@ -9,7 +9,6 @@
     opacity:0;
   }
 }
-
 @keyframes spinForever {
   from {
     transform:rotate(0deg);
@@ -35,7 +34,6 @@ body {
   grid-template-columns:1fr;
   grid-template-rows:1fr auto;
   grid-template-areas:"image" "nav";
-
   @media (min-aspect-ratio: 4/3) {
     grid-template-columns:~"min(60vw,950px)" auto;
     grid-template-rows:1fr;
@@ -48,7 +46,6 @@ body {
     flex-direction:row;
     justify-content:center;
     align-items:center;
-
     @media (min-aspect-ratio: 4/3) {
       max-width:~"min(60vw,950px)";
     }
@@ -61,7 +58,9 @@ body {
         transition:opacity .12s steps(2);
       }
       &:hover {
-        transform:scale(1.22);
+        @media screen and (prefers-reduced-motion: no-preference) {
+          transform:scale(1.22);
+        }
         & > g > text {
           opacity:0;
         }
@@ -79,7 +78,6 @@ body {
       color:#3676e8;
       font-variant-caps:small-caps;
       transition:transform .15s steps(2);
-
       @media (max-aspect-ratio: 4/3) {
         margin:.6rem 0;
       }
@@ -87,11 +85,18 @@ body {
         outline:0;
         color:#f0af2f;
       }
-      &:nth-child(2n):hover {
-        transform:rotate(10deg);
+      @media screen and (prefers-reduced-motion: no-preference) {
+        &:nth-child(2n):hover {
+          transform:rotate(10deg);
+        }
+        &:nth-child(2n+1):hover {
+          transform:rotate(-10deg);
+        }
       }
-      &:nth-child(2n+1):hover {
-        transform:rotate(-10deg);
+      @media screen and (prefers-reduced-motion: reduce) {
+        &:hover {
+          text-decoration:underline;
+        }
       }
     }
   }
@@ -115,51 +120,53 @@ body {
     & > img, svg {
       height:~"min(10vw, 100px)";
     }
-    &:nth-child(1) > svg {
-      #interface-hover-eegg {
-        opacity:0;
+    @media screen and (prefers-reduced-motion: no-preference) {
+      &:nth-child(1) > svg {
+        #interface-hover-eegg {
+          opacity:0;
+        }
+        &:hover #interface-hover-eegg {
+          animation:flash .2s forwards;
+          animation-iteration-count:2;
+          animation-timing-function:steps(1);
+        }
       }
-      &:hover #interface-hover-eegg {
-        animation:flash .2s forwards;
-        animation-iteration-count:2;
-        animation-timing-function:steps(1);
+      &:nth-child(2) > svg {
+        #filter-sort-eegg1, #filter-sort-eegg2 {
+          transform:none;
+          transition:transform .2s ease-in-out;
+        }
+        &:hover #filter-sort-eegg1, #filter-sort-eegg2 {
+          //transition-timing-function: ease-out;
+          transform-origin:center center;
+        }
+        &:hover #filter-sort-eegg1 {
+          transform:translateX(6px);
+        }
+        &:hover #filter-sort-eegg2 {
+          transform:translateX(12px);
+        }
       }
-    }
-    &:nth-child(2) > svg {
-      #filter-sort-eegg1, #filter-sort-eegg2 {
-        transform:none;
-        transition:transform .2s ease-in-out;
+      &:nth-child(3) > svg {
+        .metadata-eegg {
+          opacity:1;
+        }
+        &:hover .metadata-eegg {
+          opacity:0;
+        }
       }
-      &:hover #filter-sort-eegg1, #filter-sort-eegg2 {
-        //transition-timing-function: ease-out;
-        transform-origin:center center;
+      &:nth-child(4) > svg > path, polygon {
+        pointer-events:none;
       }
-      &:hover #filter-sort-eegg1 {
-        transform:translateX(6px);
+      &:nth-child(5) > img {
+        animation:spinForever 1s linear;
+        animation-iteration-count:infinite;
+        animation-direction:forwards;
+        animation-play-state:paused;
       }
-      &:hover #filter-sort-eegg2 {
-        transform:translateX(12px);
+      &:nth-child(5) > img:hover {
+        animation-play-state:running;
       }
-    }
-    &:nth-child(3) > svg {
-      .metadata-eegg {
-        opacity:1;
-      }
-      &:hover .metadata-eegg {
-        opacity:0;
-      }
-    }
-    &:nth-child(4) > svg > path, polygon {
-      pointer-events:none;
-    }
-    &:nth-child(5) > img {
-      animation:spinForever 1s linear;
-      animation-iteration-count:infinite;
-      animation-direction:forwards;
-      animation-play-state:paused;
-    }
-    &:nth-child(5) > img:hover {
-      animation-play-state:running;
     }
   }
 }

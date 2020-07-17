@@ -1,0 +1,92 @@
+@keyframes flowingBackground {
+  from {
+    background-position:50% 50%;
+  }
+  to {
+    background-position:50% calc(50% + 18.5px);
+  }
+}
+
+html {
+  display:flex;
+  flex-direction:column;
+  justify-content:start;
+  align-items:center;
+}
+
+body {
+  max-width:950px;
+}
+
+h1 { text-align:center; }
+
+#downloads {
+  display:grid;
+  @media all and (min-width: (125px*7)) {
+    grid-auto-columns:1fr;
+    grid-auto-flow:column;
+    grid-template-rows:auto auto auto;
+  }
+  @media all and (max-width: (125px*7 - 1)) {
+    grid-template-columns:1fr 1fr 1fr;
+    grid-auto-rows:auto;
+    & > div {
+      display:flex !important;
+      flex-direction:column;
+      justify-content:start;
+      align-items:center;
+    }
+  }
+  @media all and (max-width: (125px*3.5)) {
+    grid-template-columns:1fr;
+    & > div {
+      display:contents !important;
+      flex-direction:unset;
+      justify-content:unset;
+      align-items:unset;
+    }
+  }
+  place-items:center center;
+  & > div {
+    flex:1;
+    display:contents;
+    text-align:center;
+    & > button {
+      font-family:'Roboto', Arial, Helvetica, sans-serif;
+      display:block;
+      box-sizing:content-box;
+      font-size:12px;
+      padding:24px;
+      height:12px;
+      width:12px;
+      border:0;
+      border-radius:50%;
+      background-image:url(img/download.svg);
+      background-size:18.5px 18.5px;
+      background-position:50% 50%;
+      background-color:#1e88e5;
+      animation:flowingBackground 450ms forwards linear paused infinite;
+      transition:transform .2s ease, opacity .2s ease;
+      &:focus {
+        outline:0;
+        background-color:desaturate(#ff9800, 5%);
+        background-image:url(img/download-focused.svg);
+        @media screen and (prefers-reduced-motion: no-preference) {
+          animation-play-state:running;
+          transform:scale(1.07);
+        }
+      }
+      &:hover {
+        @media screen and (prefers-reduced-motion: no-preference) {
+          animation-play-state:running;
+          transform:scale(1.18);
+        }
+        @media screen and (prefers-reduced-motion: reduce) {
+          opacity:.9;
+        }
+      }
+    }
+  }
+}
+
+.important-info { font-size:1.2rem; text-align:center; }

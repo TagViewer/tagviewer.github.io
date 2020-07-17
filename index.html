@@ -9,7 +9,7 @@
     <meta name="description" content="TagViewer: A simple but powerful media organizer.">
     <meta name="keywords" content="tag,viewer,organizer,media,categorization,sorting">
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" type="text/css">
     <link rel="stylesheet" href="index.css" type="text/css">
   </head>
   <body>
@@ -56,19 +56,21 @@
       </figure>
     </section>
     <script>
-      let playedAnim = false;
-      document.querySelector('#perks > figure:nth-child(4) > svg').addEventListener('mouseover', function (e) {
-        console.log('mouseover');
-        console.log(e);
-        if (!playedAnim && e.target.tagName.toUpperCase() === 'SVG') this.querySelectorAll('animate.animator').forEach(el => void el.beginElement());
-        playedAnim = true;
-      });
-      document.querySelector('#perks > figure:nth-child(4) > svg').addEventListener('mouseout', function (e) {
-        console.log('mouseout');
-        console.log(e);
-        if (e.target.tagName.toUpperCase() === 'SVG' && playedAnim) this.querySelectorAll('animate.resetter').forEach(el => void el.beginElement());
-        playedAnim = e.target.tagName.toUpperCase() !== 'SVG' && playedAnim;
-      });
+      if (window.matchMedia('screen and (prefers-reduced-motion: no-preference)').matches) {
+        let playedAnim = false;
+        document.querySelector('#perks > figure:nth-child(4) > svg').addEventListener('mouseover', function (e) {
+          console.log('mouseover');
+          console.log(e);
+          if (!playedAnim && e.target.tagName.toUpperCase() === 'SVG') this.querySelectorAll('animate.animator').forEach(el => void el.beginElement());
+          playedAnim = true;
+        });
+        document.querySelector('#perks > figure:nth-child(4) > svg').addEventListener('mouseout', function (e) {
+          console.log('mouseout');
+          console.log(e);
+          if (e.target.tagName.toUpperCase() === 'SVG' && playedAnim) this.querySelectorAll('animate.resetter').forEach(el => void el.beginElement());
+          playedAnim = e.target.tagName.toUpperCase() !== 'SVG' && playedAnim;
+        });
+      }
     </script>
   </body>
 </html>
